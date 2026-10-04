@@ -4,7 +4,7 @@ import json
 from time import perf_counter
 from pydantic import ValidationError
 from app.config import settings
-from app.domain import ticket_ids
+from app.domain import ticket_ids, requests_real_world_action
 from app.models import AgentDecision, AgentState, ArenaResponse, Metrics, ToolTrace
 from app.prompts import build_messages
 from app.providers import get_model, ProviderError, DailyBudgetReached
@@ -27,6 +27,9 @@ async def run_agent(request, history, model, goal=None, model_client=None):
                              stop_reason=reason, steps=state.steps, tool_calls=traces,
                              errors=errors, events=events, metrics=metrics)
 
+    if requests_real_world_action(state.goal.split('\nUser clarification: ')[0]):
+        return finish('blocked', 'autonomy_boundary',
+                      'I can only triage a sample ticket and prepare an unsent draft. No real message, account change, refund or deletion can be performed.')
     if not state.authorized_ticket_ids:
         return finish('needs_clarification', 'missing_ticket_id',
                       'Which sample ticket should I triage? Provide one identifier, such as T1001.')

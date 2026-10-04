@@ -10,7 +10,7 @@ from app.arena import execute
 from app.providers import ModelResult, DemoModel, ProviderError
 from app.tools import Sandbox
 from app.memory import Memory
-from app.domain import resolve_goal
+from app.domain import resolve_goal, requests_real_world_action
 from app.prompts import build_messages
 from app.models import AgentState
 
@@ -109,6 +109,16 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         r = await self.run_case(client=Scripted([{'status':'continue','action':'send_email','arguments':{'to':'outsider@example.test'}}]))
         self.assertEqual(r.status,'contract_error')
         self.assertFalse(r.tool_calls)
+
+    async def test_explicit_real_world_request_stops_before_tools(self):
+        client = Scripted([{'status':'continue','action':'read_ticket','arguments':{'ticket_id':'T1001'}}])
+        r = await self.run_case('Send a real email to the customer for T1001', client)
+        self.assertEqual(r.status,'blocked')
+        self.assertEqual(r.stop_reason,'autonomy_boundary')
+        self.assertFalse(r.tool_calls)
+        self.assertEqual(client.calls,0)
+        self.assertFalse(requests_real_world_action('Triage the customer email in T1001'))
+        self.assertFalse(requests_real_world_action('Triage the refund request in T1001'))
 
     async def test_outage_cannot_be_downgraded(self):
         r = await self.run_case('Triage T1002',Scripted([

@@ -1,0 +1,162 @@
+{
+  "generated_at": "2026-10-04T16:06:11.156949+00:00",
+  "url": "https://ticketpilot-i221296-production.up.railway.app",
+  "passed": true,
+  "checks": {
+    "/": {
+      "http_status": 200,
+      "passed": true
+    },
+    "/health": {
+      "http_status": 200,
+      "passed": true
+    },
+    "/arena/manifest": {
+      "http_status": 200,
+      "passed": true
+    },
+    "/docs": {
+      "http_status": 200,
+      "passed": true
+    },
+    "live_model": {
+      "passed": true
+    },
+    "arena": {
+      "http_status": 200,
+      "passed": true,
+      "response": {
+        "arena_version": "0.1",
+        "request_id": "a2947c50-3c19-4beb-b150-557bf01fd5e8",
+        "status": "completed",
+        "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: The customer reports a duplicate subscription charge on an individual invoice, which is a billing issue with no service outage or security risk. Normal priority is appropriate.\n\nUnsent reply draft:\nHi,\n\nThank you for reaching out. I\u2019m sorry to hear that you\u2019re seeing a duplicate subscription charge on your invoice. I\u2019ve forwarded this to our billing team and they\u2019ll review the invoice details and correct any errors.\n\nYou can expect an update within 24\u202fhours. If you have any additional information or questions in the meantime, please let me know.\n\nThank you for your patience.\n\nNo real message or account change was made.",
+        "steps": 4,
+        "stop_reason": "goal_completed",
+        "tool_calls": [
+          {
+            "step": 1,
+            "tool": "read_ticket",
+            "attempt": 1,
+            "outcome": "success",
+            "latency_ms": 0.06981566548347473
+          },
+          {
+            "step": 2,
+            "tool": "set_triage",
+            "attempt": 1,
+            "outcome": "success",
+            "latency_ms": 0.04874914884567261
+          },
+          {
+            "step": 3,
+            "tool": "draft_reply",
+            "attempt": 1,
+            "outcome": "success",
+            "latency_ms": 0.06000697612762451
+          }
+        ],
+        "errors": [],
+        "events": [
+          {
+            "step": 1,
+            "event": "model_decision",
+            "latency_ms": 218.46
+          },
+          {
+            "step": 1,
+            "event": "validation",
+            "passed": true,
+            "status": "continue",
+            "action": "read_ticket"
+          },
+          {
+            "step": 1,
+            "event": "tool_observation",
+            "tool": "read_ticket",
+            "data": {
+              "ticket_id": "T1001",
+              "subject": "Duplicate subscription charge",
+              "body": "My sample invoice shows the subscription charge twice. Please review the duplicate entry.",
+              "category": "billing",
+              "impact": "individual",
+              "service_down": false,
+              "security_risk": false
+            }
+          },
+          {
+            "step": 2,
+            "event": "model_decision",
+            "latency_ms": 659.64
+          },
+          {
+            "step": 2,
+            "event": "validation",
+            "passed": true,
+            "status": "continue",
+            "action": "set_triage"
+          },
+          {
+            "step": 2,
+            "event": "tool_observation",
+            "tool": "set_triage",
+            "data": {
+              "ticket_id": "T1001",
+              "priority": "normal",
+              "team": "billing",
+              "rationale": "The customer reports a duplicate subscription charge on an individual invoice, which is a billing issue with no service outage or security risk. Normal priority is appropriate."
+            }
+          },
+          {
+            "step": 3,
+            "event": "model_decision",
+            "latency_ms": 500.02
+          },
+          {
+            "step": 3,
+            "event": "validation",
+            "passed": true,
+            "status": "continue",
+            "action": "draft_reply"
+          },
+          {
+            "step": 3,
+            "event": "tool_observation",
+            "tool": "draft_reply",
+            "data": {
+              "ticket_id": "T1001",
+              "text": "Hi,\n\nThank you for reaching out. I\u2019m sorry to hear that you\u2019re seeing a duplicate subscription charge on your invoice. I\u2019ve forwarded this to our billing team and they\u2019ll review the invoice details and correct any errors.\n\nYou can expect an update within 24\u202fhours. If you have any additional information or questions in the meantime, please let me know.\n\nThank you for your patience.",
+              "sent": false
+            }
+          },
+          {
+            "step": 4,
+            "event": "model_decision",
+            "latency_ms": 367.27
+          },
+          {
+            "step": 4,
+            "event": "validation",
+            "passed": true,
+            "status": "completed",
+            "action": null
+          },
+          {
+            "step": 4,
+            "event": "agent_stop",
+            "reason": "goal_completed"
+          }
+        ],
+        "metrics": {
+          "latency_ms": 1754.105780273676,
+          "model_calls": 4,
+          "input_tokens": 5533,
+          "output_tokens": 404,
+          "estimated_cost_usd": 0.000536175
+        }
+      }
+    },
+    "clarification": {
+      "passed": true
+    }
+  }
+}

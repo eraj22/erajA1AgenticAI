@@ -5,6 +5,7 @@ test_complete_and_three_meaningful_actions (test_agent.AgentTests.test_complete_
 test_conflicting_identifiers (test_agent.AgentTests.test_conflicting_identifiers) ... ok
 test_context_budget_prevents_call (test_agent.AgentTests.test_context_budget_prevents_call) ... ok
 test_cost_budget_prevents_call (test_agent.AgentTests.test_cost_budget_prevents_call) ... ok
+test_explicit_real_world_request_stops_before_tools (test_agent.AgentTests.test_explicit_real_world_request_stops_before_tools) ... ok
 test_external_identifier_not_authorized (test_agent.AgentTests.test_external_identifier_not_authorized) ... ok
 test_fault_is_independent_for_each_run (test_agent.AgentTests.test_fault_is_independent_for_each_run) ... ok
 test_faults_recover_and_count (test_agent.AgentTests.test_faults_recover_and_count) ... ok
@@ -53,6 +54,6 @@ test_http_error_is_sanitized (test_providers.ProviderTests.test_http_error_is_sa
 test_invalid_model_cannot_change_provider_url (test_providers.ProviderTests.test_invalid_model_cannot_change_provider_url) ... ok
 
 ----------------------------------------------------------------------
-Ran 53 tests in 1.980s
+Ran 54 tests in 1.500s
 
 OK

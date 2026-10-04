@@ -40,35 +40,35 @@
     ],
     [
       "Working agent interface",
-      "Pending - public deployment not created"
+      "https://ticketpilot-i221296-production.up.railway.app/"
     ],
     [
       "Health endpoint (GET)",
-      "Pending - public base URL required; route /health"
+      "https://ticketpilot-i221296-production.up.railway.app/health"
     ],
     [
       "Arena endpoint (POST)",
-      "Pending - public base URL required; route /arena/run"
+      "https://ticketpilot-i221296-production.up.railway.app/arena/run"
     ],
     [
       "Manifest endpoint (GET)",
-      "Pending - public base URL required; route /arena/manifest"
+      "https://ticketpilot-i221296-production.up.railway.app/arena/manifest"
     ],
     [
       "API documentation",
-      "Pending - public base URL required; route /docs"
+      "https://ticketpilot-i221296-production.up.railway.app/docs"
     ],
     [
       "Hosting provider",
-      "Render blueprint configured for Groq; deployment not created or verified."
+      "Railway Docker service connected to the private GitHub repository; public live deployment verified."
     ],
     [
       "Default model / provider",
-      "Groq GPT-OSS 20B configured in Render blueprint; live key and deployment pending. Local default remains labelled offline demo."
+      "Groq GPT-OSS 20B is the deployed live default. ENABLE_DEMO=false; the offline demo is not available on the public service."
     ],
     [
       "Other available models",
-      "Groq GPT-OSS 120B configured as second candidate; live account access and measurements pending."
+      "Groq GPT-OSS 120B is selectable in chat; measured on the same ten live cases."
     ],
     [
       "Example input",
@@ -80,11 +80,11 @@
     ],
     [
       "Cold-start / restart limitations",
-      "Single worker; chat history, per-process rate limits and daily call counters reset on restart. Each run has a new sandbox. Hosted cold-start behavior is not measured."
+      "Single worker; chat history, per-process rate limits and daily call counters reset on restart. Each run has a new sandbox; free-host availability and cold starts may vary."
     ],
     [
       "Repository access",
-      "Private repository verified; source uploaded to eraj22/erajA1AgenticAI. Instructor invitation pending - username not supplied."
+      "Private repository verified; source uploaded to eraj22/erajA1AgenticAI. Instructor invitation pending because the GitHub username was not supplied."
     ],
     [
       "Public test results",
@@ -92,19 +92,19 @@
     ],
     [
       "Unit test results",
-      "evaluation/results/local_unit_results.txt: 53/53 offline tests passed, including mocked Groq adapter checks."
+      "evaluation/results/local_unit_results.txt: 54/54 offline tests passed, including mocked Groq adapter and explicit real-world-action boundary checks."
     ],
     [
       "Model comparison",
-      "Not measured. Groq GPT-OSS 20B and 120B selected as candidates; GROQ_API_KEY and live account access required."
+      "evaluation/results/model_comparison.json: live 20B passed 7/10 strict cases and 120B passed 3/10; 20B selected. Provider failures left two usage totals unknown per model; see observed subtotals and limitations in README."
     ],
     [
       "Deployment verification",
-      "Not performed. evaluation/verify_deployment.py is provided."
+      "evaluation/results/deployment_verification.json: public UI, health, manifest, docs, live Arena run and two-turn clarification passed without evaluator credentials."
     ],
     [
       "Classroom submission",
-      "Not uploaded or turned in. This draft must not be submitted as a completed assignment."
+      "Not uploaded or turned in. University Classroom account sign-in is pending; this summary remains a draft."
     ]
   ]
 }

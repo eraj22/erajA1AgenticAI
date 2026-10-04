@@ -9,10 +9,10 @@ TicketPilot reads one sample support ticket, chooses a policy-compliant priority
 team, and prepares an unsent reply draft. The model chooses actions and reply content;
 Python owns validation, permitted capabilities, retries and stopping.
 
-> **Readiness:** the local application and offline tests are implemented. Real-model
-> measurements, public deployment, instructor repository access and Classroom submission
-> still require account configuration. The default `demo` is a deterministic UI/test
-> aid, not an LLM and not evidence of satisfying the model-selection requirement.
+> **Readiness:** Railway hosts the live Groq agent and the public interface is reachable.
+> Measured two-model results and full deployed stress results are being recorded.
+> Instructor repository access and Classroom submission remain pending. The `demo`
+> remains a deterministic offline aid, never live model evidence.
 
 ## Quick start
 
@@ -69,6 +69,10 @@ The live agent can choose whether to inspect policy, how to classify permitted
 priorities, what draft to write, whether to clarify, and whether to stop. Actions
 depend on observations and validated decisions rather than a fixed function chain.
 The offline demo is intentionally scripted and must not be presented as this live loop.
+Explicit requests for real-world sending, refunds, deletion, account changes or
+credential disclosure are rejected at admission before a model or tool call.
+This is a bounded intent gate for the active user goal; the tool allowlist is the
+backstop for other wording and for any unsafe model decision.
 
 ### Folder map
 
@@ -138,8 +142,9 @@ cannot save a partial triage or duplicate a draft.
 
 Completed output is rendered from validated state. Model claims of completion
 without all three required successful tools are rejected. Draft factual quality
-still needs live evaluation and human review; the system prevents real sending,
-not every possible inaccurate sentence in a draft.
+still needs human review: one live verification draft promised an update within
+24 hours and implied it had been forwarded, neither of which the sandbox did.
+The system prevents real sending, not every possible inaccurate sentence in a draft.
 
 ## Prompt and context design
 
@@ -252,17 +257,20 @@ Public tests include successful triage, missing/unknown/conflicting IDs, injecte
 text, each fault hook, budget exhaustion, autonomy and a two-turn chat. The public
 runner checks structured observations and state, not just a success label.
 
-The current evidence records **53/53 unit tests** and **14/14 local HTTP checks**.
+The current evidence records **54/54 unit tests** and **14/14 local HTTP checks**.
 See evaluation/results/local_unit_results.txt and local_public_results.json for
 actual offline evidence. These results **do not establish live LLM injection
 resistance, language understanding, model quality or the hidden Arena score**.
+The external deployment verifier also passed the public UI, health, manifest,
+documentation, live Arena triage and two-turn clarification checks; its complete
+response is saved in evaluation/results/deployment_verification.json.
 
 ## Live provider setup and required model experiment
 
 Provider adapters use async REST via httpx. Supported providers are Gemini,
 Anthropic, and Groq. Groq is the selected deployment provider. Current production
 candidate IDs are `openai/gpt-oss-20b` and `openai/gpt-oss-120b`; model access
-still needs verification using Eraj's Groq account. The adapter uses JSON mode,
+has been confirmed with Eraj's Groq account through the Railway deployment. The adapter uses JSON mode,
 low reasoning effort and hides returned reasoning. Runtime schema and policy checks
 validate every decision before a tool runs.
 
@@ -273,15 +281,14 @@ ENABLE_DEMO=false
 MODEL_PROVIDER=groq
 MODEL_NAME=openai/gpt-oss-20b
 MODEL_NAMES=openai/gpt-oss-20b,openai/gpt-oss-120b
-GROQ_API_KEY=<your key, stored only in .env or Render secrets>
+GROQ_API_KEY=<your key, stored only in .env or host secrets>
 MODEL_PRICES_JSON={"openai/gpt-oss-20b":{"input":0.075,"output":0.30},"openai/gpt-oss-120b":{"input":0.15,"output":0.60}}
 MAX_OUTPUT_TOKENS=2048
 ```
 
 These prices are USD per million input/output tokens from Groq's model list as
 checked on October 4, 2026; verify again before making cost claims. Never commit
-or submit the real `.env`. A provider key has not been supplied, so the live
-experiment remains unmeasured. Gemini and Anthropic remain optional alternatives.
+or submit the real `.env`. Gemini and Anthropic remain optional alternatives.
 
 MODEL_PRICES_JSON is a JSON object mapping exact model IDs to input/output USD per
 million tokens. Example shape (replace symbolic values with current numeric prices):
@@ -292,12 +299,12 @@ Model availability and prices must be checked with the provider before running.
 .\.venv\Scripts\python.exe evaluation/compare_models.py --models openai/gpt-oss-20b openai/gpt-oss-120b
 ```
 
-When the Groq key is stored only in Render, run the same comparison through the
+When the Groq key is stored only in Railway, run the same comparison through the
 deployed agent. Each case uses a fresh chat session, and the saved response
 contains the provider-reported usage and server-side cost estimate:
 
 ```powershell
-.\.venv\Scripts\python.exe evaluation/compare_models.py --url https://YOUR-PUBLIC-HOST --models openai/gpt-oss-20b openai/gpt-oss-120b
+.\.venv\Scripts\python.exe evaluation/compare_models.py --url https://ticketpilot-i221296-production.up.railway.app --models openai/gpt-oss-20b openai/gpt-oss-120b --pause-seconds 60
 ```
 
 The runner refuses demo and identical model IDs. It runs the same ten representative
@@ -308,29 +315,42 @@ inspect per-case data to distinguish that forced error from natural model errors
 “Correct action selection” is a strict end-to-end expected-action/state pass metric,
 not an independent human judgment of each intermediate action.
 
-| Candidate | Task success | Contract validity | Action selection | Latency | Tokens | Estimated cost |
+| Candidate | Task success | Contract validity | Action selection | Mean latency / case | Observed input + output tokens | Observed cost |
 |---|---|---|---|---|---|---|
-| Groq GPT-OSS 20B - key pending | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
-| Groq GPT-OSS 120B - key pending | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
+| Groq GPT-OSS 20B | 7/10 | 78.4% | 7/10 | 1,338 ms | 42,518 + 2,921 (7/9 runs) | At least $0.004065 |
+| Groq GPT-OSS 120B | 3/10 | 83.9% | 3/10 | 1,958 ms | 31,588 + 2,569 (7/9 runs) | At least $0.006280 |
 
-**Selection rationale pending real measurements.** Prefer the model meeting semantic
-correctness and safety requirements first, then compare validity, latency and cost.
-A model with more failures cannot be selected solely for lower cost. Both must fit
-the bounded context/output and 40-second loop budget. Copy measured results into
-this table and write the observed tradeoff before final submission.
+**Selection:** GPT-OSS 20B remains the default. It completed more strict tasks,
+including the injected-text target test and both tool-recovery tests, and averaged
+620 ms less latency per case. Both models had provider failures and some incorrect
+decisions; neither achieved perfect reliability. The 120B model had slightly higher
+decision-contract validity but more end-to-end failures, including a routing-policy
+violation in the account-compromise case. The six-decision limit caught both models
+when they could not finish safely. The measured costs above are **lower bounds**:
+each model had nine runs with model calls, but provider failures left usage unknown
+for two runs. Whole-experiment token/cost totals therefore remain null in the JSON.
+These ten inputs are a small comparison, not a statistical performance guarantee.
+The comparison was run before the explicit real-world-action admission guard was
+added. That guard changes only such requests; the original measurements are kept
+unchanged for provenance. The final guard has a separate deployed retest record.
 
 ## Deployment
 
-Render is the supplied deployment target. Create a **private** GitHub repository
-from this source folder and invite the instructor using the verified Classroom
-username. Do not invite an inferred username or make the repository public.
+Railway is the deployment host. The source is connected from the private GitHub
+repository `eraj22/erajA1AgenticAI` on branch `main`. Public application:
+https://ticketpilot-i221296-production.up.railway.app/ . Railway uses the root
+Dockerfile. Its service start command is `python run.py`, with `/health` as the
+healthcheck. The runtime uses one worker because chat memory and call counters are
+in process.
 
-Use the Render Python service configuration in render.yaml:
-build `pip install -r requirements.txt`;
-start `uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1`;
-health route /health. Set the provider/model settings and secret key in Render.
-Groq is preselected; enter GROQ_API_KEY only in Render secret settings.
-The Dockerfile offers an equivalent startup path.
+Service variables: `ENABLE_DEMO=false`, `MODEL_PROVIDER=groq`,
+`MODEL_NAME=openai/gpt-oss-20b`, `MODEL_NAMES=openai/gpt-oss-20b,openai/gpt-oss-120b`,
+`MAX_OUTPUT_TOKENS=2048`, and `MODEL_PRICES_JSON` with the current Groq prices above.
+`GROQ_API_KEY` is stored only as a Railway secret; it is never included in Git or
+in the ZIP. Railway's Free/Trial plan can have limited outbound access for
+unverified accounts and limited monthly credits, so actual public checks remain
+necessary. `render.yaml` is an optional alternative for accounts that can complete
+Render's billing verification; it is not the deployed service.
 
 The local default host is 127.0.0.1; hosted startup binds 0.0.0.0 and uses PORT.
 Use ENABLE_DEMO=false and a live default model for grading. A healthy process alone
@@ -340,8 +360,8 @@ promise availability that has not been measured.
 After deployment, from outside the hosting environment:
 
 ```powershell
-.\.venv\Scripts\python.exe evaluation/verify_deployment.py --url https://YOUR-PUBLIC-HOST
-.\.venv\Scripts\python.exe evaluation/run_public_tests.py --url https://YOUR-PUBLIC-HOST --output evaluation/results/deployed_public_results.json
+.\.venv\Scripts\python.exe evaluation/verify_deployment.py --url https://ticketpilot-i221296-production.up.railway.app --pause-seconds 60
+.\.venv\Scripts\python.exe evaluation/run_public_tests.py --url https://ticketpilot-i221296-production.up.railway.app --pause-seconds 60 --output evaluation/results/deployed_public_results.json
 ```
 
 Verify the browser UI in a private window. The required APIs and app must require
@@ -364,10 +384,10 @@ The two Classroom attachments are **i221296.zip** and
 SUBMISSION.md and the PDF must match submission_details.json and contain the same
 full source commit hash and actual URLs.
 
-The supplied summaries include the confirmed section, university email, GitHub
-username and private repository URL. They remain drafts because the instructor
-invitation, public deployment and real-model measurements are not completed. Required deployment
-URLs are explicitly marked pending rather than replaced with localhost links.
+The summaries contain the confirmed identity, private repository, public Railway
+URL, and measured evidence once checks finish. They remain drafts until the
+instructor invitation, final source consistency check, and Classroom turn-in are
+complete. Do not replace measured results with demo results.
 
 The source commit can precede metadata generation, as permitted by the starter.
 A later metadata-only commit may update SUBMISSION.md and submission_details.json.

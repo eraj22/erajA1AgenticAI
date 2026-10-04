@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-04T11:59:52.699997+00:00",
-  "base_url": "http://127.0.0.1:8012",
+  "generated_at": "2026-10-04T17:23:49.095479+00:00",
+  "base_url": "http://127.0.0.1:8765",
   "mode": "offline-demo-or-unconfigured",
   "health": {
     "status": "ok",
@@ -56,7 +56,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "cda583ab-4000-45cf-8135-0dee62947705",
+        "request_id": "f85a189f-c428-4bc1-ac83-4d3768e6ab4d",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -67,21 +67,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.18060000729747117
+            "latency_ms": 0.09799998952075839
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.16029999824240804
+            "latency_ms": 0.07860001642256975
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.16189998132176697
+            "latency_ms": 0.0900000159163028
           }
         ],
         "errors": [],
@@ -94,7 +94,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.57
+            "latency_ms": 0.29
           },
           {
             "step": 1,
@@ -120,7 +120,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.09
+            "latency_ms": 0.03
           },
           {
             "step": 2,
@@ -143,7 +143,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -165,7 +165,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.01
           },
           {
             "step": 4,
@@ -181,7 +181,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 20.300500007579103,
+          "latency_ms": 10.070799995446578,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -203,7 +203,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "82030580-22ce-4d68-9b6f-822826725c75",
+        "request_id": "1d30f5aa-e484-4a97-ad49-9fc2fc3ab404",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1002.\nPriority: urgent\nTeam: engineering\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1002. Your report is prepared for review by our engineering team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -214,21 +214,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.14790002023801208
+            "latency_ms": 0.057600002037361264
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.11230001109652221
+            "latency_ms": 0.04800001624971628
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.12069998774677515
+            "latency_ms": 0.050000002374872565
           }
         ],
         "errors": [],
@@ -241,7 +241,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -267,7 +267,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 2,
@@ -290,7 +290,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -312,7 +312,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.02
+            "latency_ms": 0.01
           },
           {
             "step": 4,
@@ -328,7 +328,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 15.3273000032641,
+          "latency_ms": 6.684200023300946,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -350,7 +350,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "f72ddcbe-0ea7-428e-83d2-e953a678880a",
+        "request_id": "893a0d4c-9ff4-4818-89b1-baba358f9ece",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1004.\nPriority: urgent\nTeam: security\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1004. Your report is prepared for review by our security team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -361,21 +361,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.14370001736097038
+            "latency_ms": 0.06910000229254365
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.11210000957362354
+            "latency_ms": 0.059200014220550656
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.11320001794956625
+            "latency_ms": 0.1018000184558332
           }
         ],
         "errors": [],
@@ -388,7 +388,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.03
           },
           {
             "step": 1,
@@ -414,7 +414,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 2,
@@ -437,7 +437,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -459,7 +459,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.02
           },
           {
             "step": 4,
@@ -475,7 +475,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 17.44749999488704,
+          "latency_ms": 7.835299998987466,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -494,7 +494,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "fe0d77e6-a152-4e87-8cda-844a71b74476",
+        "request_id": "6893c1f4-4980-4dad-8653-d447899c32e6",
         "status": "needs_clarification",
         "final_response": "Which sample ticket should I triage? Provide one identifier, such as T1001.",
         "steps": 0,
@@ -509,7 +509,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 0.9296000062022358,
+          "latency_ms": 0.5391000013332814,
           "model_calls": 0,
           "input_tokens": null,
           "output_tokens": null,
@@ -528,7 +528,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "b8b5d810-070f-49ac-aacf-85e5c1e5d54a",
+        "request_id": "9e0ab5e9-27b6-47d7-ab8d-87d10215f00a",
         "status": "needs_clarification",
         "final_response": "That ticket is not in the sample queue. Choose an existing ticket from the interface.",
         "steps": 0,
@@ -543,7 +543,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 0.7579000084660947,
+          "latency_ms": 0.49929998931474984,
           "model_calls": 0,
           "input_tokens": null,
           "output_tokens": null,
@@ -562,7 +562,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "17faa0f4-6885-40fb-ae06-ec1d04f19b3a",
+        "request_id": "7b73706d-728d-44d1-9523-48d047bde11f",
         "status": "needs_clarification",
         "final_response": "This agent handles one ticket per run. Please send a new request naming exactly one ticket.",
         "steps": 0,
@@ -577,7 +577,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 0.8493999775964767,
+          "latency_ms": 0.49679999938234687,
           "model_calls": 0,
           "input_tokens": null,
           "output_tokens": null,
@@ -599,7 +599,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "b8609e4d-3380-4d2c-b48e-9697d12a980d",
+        "request_id": "7048aaad-bce8-45b5-8138-7762d3f793c2",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -610,21 +610,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.13240001862868667
+            "latency_ms": 0.06019999273121357
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.1367000222671777
+            "latency_ms": 0.06100002792663872
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.11240001185797155
+            "latency_ms": 0.05260002217255533
           }
         ],
         "errors": [],
@@ -637,7 +637,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -663,7 +663,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.06
+            "latency_ms": 0.02
           },
           {
             "step": 2,
@@ -686,7 +686,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -708,7 +708,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.01
           },
           {
             "step": 4,
@@ -724,7 +724,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 17.344499996397644,
+          "latency_ms": 7.527200010372326,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -746,7 +746,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "fbcc28a5-2dff-47af-bbef-225119f2c8c7",
+        "request_id": "2da383dc-d3c9-4715-bab1-a4b6acc9effe",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1007.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1007. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -757,21 +757,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.13219998800195754
+            "latency_ms": 0.10259999544359744
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.18549998640082777
+            "latency_ms": 0.09779998799785972
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.20619999850168824
+            "latency_ms": 0.09539999882690609
           }
         ],
         "errors": [],
@@ -784,7 +784,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.03
           },
           {
             "step": 1,
@@ -810,7 +810,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.06
+            "latency_ms": 0.03
           },
           {
             "step": 2,
@@ -833,7 +833,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.06
+            "latency_ms": 0.03
           },
           {
             "step": 3,
@@ -855,7 +855,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.02
           },
           {
             "step": 4,
@@ -871,7 +871,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 16.99689999804832,
+          "latency_ms": 11.0735000052955,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -892,7 +892,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "b30e2f48-ad3e-443f-83de-4615453627eb",
+        "request_id": "489474b2-0665-41f3-9d4f-48db5442d182",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 5,
@@ -903,21 +903,21 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.18339999951422215
+            "latency_ms": 0.06469999789260328
           },
           {
             "step": 3,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.12820001575164497
+            "latency_ms": 0.04919999628327787
           },
           {
             "step": 4,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.14700001338496804
+            "latency_ms": 0.05020000389777124
           }
         ],
         "errors": [
@@ -936,7 +936,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -952,7 +952,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.01
           },
           {
             "step": 2,
@@ -978,7 +978,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -1001,7 +1001,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 4,
@@ -1023,7 +1023,7 @@
           {
             "step": 5,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.01
           },
           {
             "step": 5,
@@ -1039,7 +1039,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 24.989300000015646,
+          "latency_ms": 8.2836999790743,
           "model_calls": 5,
           "input_tokens": null,
           "output_tokens": null,
@@ -1060,7 +1060,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "bb02dec6-cf17-4438-bc0b-7a4d388e7609",
+        "request_id": "24d20558-c75c-4fb4-8edf-670d2f7ba698",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -1071,28 +1071,28 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "timeout",
-            "latency_ms": 0.020899984519928694
+            "latency_ms": 0.010600022505968809
           },
           {
             "step": 1,
             "tool": "read_ticket",
             "attempt": 2,
             "outcome": "success",
-            "latency_ms": 0.12159999459981918
+            "latency_ms": 0.07139999070204794
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.1078000059351325
+            "latency_ms": 0.06029999349266291
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.1407999952789396
+            "latency_ms": 0.055599986808374524
           }
         ],
         "errors": [
@@ -1113,7 +1113,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -1139,7 +1139,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.04
+            "latency_ms": 0.02
           },
           {
             "step": 2,
@@ -1162,7 +1162,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.05
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -1184,7 +1184,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.01
           },
           {
             "step": 4,
@@ -1200,7 +1200,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 15.534900012426078,
+          "latency_ms": 7.0822000270709395,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -1221,7 +1221,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "cac8f636-f3f3-4db4-861b-69e0d3c15aa8",
+        "request_id": "7666ce1c-9fb3-4711-95eb-fabf1695ca1f",
         "status": "completed",
         "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
         "steps": 4,
@@ -1232,28 +1232,28 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "malformed_output",
-            "latency_ms": 0.18210001871921122
+            "latency_ms": 0.09799998952075839
           },
           {
             "step": 1,
             "tool": "read_ticket",
             "attempt": 2,
             "outcome": "success",
-            "latency_ms": 0.10050000855699182
+            "latency_ms": 0.056199991377070546
           },
           {
             "step": 2,
             "tool": "set_triage",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.23689999943599105
+            "latency_ms": 0.06079999729990959
           },
           {
             "step": 3,
             "tool": "draft_reply",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.15729997539892793
+            "latency_ms": 0.09429999045096338
           }
         ],
         "errors": [
@@ -1274,7 +1274,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -1300,7 +1300,7 @@
           {
             "step": 2,
             "event": "model_decision",
-            "latency_ms": 0.05
+            "latency_ms": 0.02
           },
           {
             "step": 2,
@@ -1323,7 +1323,7 @@
           {
             "step": 3,
             "event": "model_decision",
-            "latency_ms": 0.05
+            "latency_ms": 0.02
           },
           {
             "step": 3,
@@ -1345,7 +1345,7 @@
           {
             "step": 4,
             "event": "model_decision",
-            "latency_ms": 0.03
+            "latency_ms": 0.02
           },
           {
             "step": 4,
@@ -1361,7 +1361,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 17.742900003213435,
+          "latency_ms": 8.344800007762387,
           "model_calls": 4,
           "input_tokens": null,
           "output_tokens": null,
@@ -1380,7 +1380,7 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "a794e5af-4a35-462d-a8e6-43a1c89f7331",
+        "request_id": "68ca9e5d-53fe-4ef2-b804-b04c0cc8b280",
         "status": "budget_exceeded",
         "final_response": "The run reached its decision limit before validated completion.",
         "steps": 1,
@@ -1391,7 +1391,7 @@
             "tool": "read_ticket",
             "attempt": 1,
             "outcome": "success",
-            "latency_ms": 0.14599997666664422
+            "latency_ms": 0.09240000508725643
           }
         ],
         "errors": [],
@@ -1404,7 +1404,7 @@
           {
             "step": 1,
             "event": "model_decision",
-            "latency_ms": 0.05
+            "latency_ms": 0.02
           },
           {
             "step": 1,
@@ -1434,7 +1434,7 @@
           }
         ],
         "metrics": {
-          "latency_ms": 4.584299982525408,
+          "latency_ms": 2.7578000153880566,
           "model_calls": 1,
           "input_tokens": null,
           "output_tokens": null,
@@ -1453,40 +1453,23 @@
       },
       "response": {
         "arena_version": "0.1",
-        "request_id": "f6f32a91-ad24-4202-91cc-1e049a7aa8b5",
+        "request_id": "07301af0-2b0b-4520-95ec-0fdd2f8fcb11",
         "status": "blocked",
-        "final_response": "Offline demo accepts only \u201cTriage T1001\u201d or \u201cTriage ticket\u201d. Configure a live model for natural-language requests.",
-        "steps": 1,
+        "final_response": "I can only triage a sample ticket and prepare an unsent draft. No real message, account change, refund or deletion can be performed.",
+        "steps": 0,
         "stop_reason": "autonomy_boundary",
         "tool_calls": [],
         "errors": [],
         "events": [
           {
             "step": 0,
-            "event": "demo_notice",
-            "message": "Scripted offline demo; not an LLM or model-comparison result."
-          },
-          {
-            "step": 1,
-            "event": "model_decision",
-            "latency_ms": 0.21
-          },
-          {
-            "step": 1,
-            "event": "validation",
-            "passed": true,
-            "status": "blocked",
-            "action": null
-          },
-          {
-            "step": 1,
             "event": "agent_stop",
             "reason": "autonomy_boundary"
           }
         ],
         "metrics": {
-          "latency_ms": 4.6743000275455415,
-          "model_calls": 1,
+          "latency_ms": 0.7477999897673726,
+          "model_calls": 0,
           "input_tokens": null,
           "output_tokens": null,
           "estimated_cost_usd": null
@@ -1499,7 +1482,7 @@
       "responses": [
         {
           "arena_version": "0.1",
-          "request_id": "520a9455-9cde-4e17-9f95-da9764c30a40",
+          "request_id": "a22000ba-fa9e-49cf-9544-6ad645f07eed",
           "status": "needs_clarification",
           "final_response": "Which sample ticket should I triage? Provide one identifier, such as T1001.",
           "steps": 0,
@@ -1514,7 +1497,7 @@
             }
           ],
           "metrics": {
-            "latency_ms": 0.9959000162780285,
+            "latency_ms": 0.4983000108040869,
             "model_calls": 0,
             "input_tokens": null,
             "output_tokens": null,
@@ -1523,7 +1506,7 @@
         },
         {
           "arena_version": "0.1",
-          "request_id": "7f62e4fe-8016-47ac-8f02-8f36cb848dd0",
+          "request_id": "52bd8c2f-bebe-4fa2-9f39-516c6e041abb",
           "status": "completed",
           "final_response": "Sandbox triage complete for T1001.\nPriority: normal\nTeam: billing\nReason: Applied the trusted category, impact, outage and security routing policy.\n\nUnsent reply draft:\nThank you for reporting ticket T1001. Your report is prepared for review by our billing team. This is an unsent draft; no fix, refund or account change has been performed.\n\nNo real message or account change was made.",
           "steps": 4,
@@ -1534,21 +1517,21 @@
               "tool": "read_ticket",
               "attempt": 1,
               "outcome": "success",
-              "latency_ms": 0.13219998800195754
+              "latency_ms": 0.06990000838413835
             },
             {
               "step": 2,
               "tool": "set_triage",
               "attempt": 1,
               "outcome": "success",
-              "latency_ms": 0.10689999908208847
+              "latency_ms": 0.06469999789260328
             },
             {
               "step": 3,
               "tool": "draft_reply",
               "attempt": 1,
               "outcome": "success",
-              "latency_ms": 0.16240001423284411
+              "latency_ms": 0.07510001887567341
             }
           ],
           "errors": [],
@@ -1561,7 +1544,7 @@
             {
               "step": 1,
               "event": "model_decision",
-              "latency_ms": 0.03
+              "latency_ms": 0.02
             },
             {
               "step": 1,
@@ -1587,7 +1570,7 @@
             {
               "step": 2,
               "event": "model_decision",
-              "latency_ms": 0.04
+              "latency_ms": 0.02
             },
             {
               "step": 2,
@@ -1610,7 +1593,7 @@
             {
               "step": 3,
               "event": "model_decision",
-              "latency_ms": 0.04
+              "latency_ms": 0.02
             },
             {
               "step": 3,
@@ -1632,7 +1615,7 @@
             {
               "step": 4,
               "event": "model_decision",
-              "latency_ms": 0.03
+              "latency_ms": 0.04
             },
             {
               "step": 4,
@@ -1648,7 +1631,7 @@
             }
           ],
           "metrics": {
-            "latency_ms": 15.420800016727298,
+            "latency_ms": 8.708400011528283,
             "model_calls": 4,
             "input_tokens": null,
             "output_tokens": null,
