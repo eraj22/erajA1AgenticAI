@@ -10,7 +10,10 @@ team, and prepares an unsent reply draft. The model chooses actions and reply co
 Python owns validation, permitted capabilities, retries and stopping.
 
 > **Readiness:** Railway hosts the live Groq agent and the public interface is reachable.
-> Measured two-model results and full deployed stress results are being recorded.
+> The two-model comparison is measured. The initial deployed stress run passed 12
+> of 13 Arena cases, then a transient client DNS failure interrupted its final
+> chat check. The failed real-action case was fixed and retested on the active
+> deployment with zero model or tool calls; the two-turn chat also passed.
 > Instructor repository access and Classroom submission remain pending. The `demo`
 > remains a deterministic offline aid, never live model evidence.
 
@@ -264,6 +267,13 @@ resistance, language understanding, model quality or the hidden Arena score**.
 The external deployment verifier also passed the public UI, health, manifest,
 documentation, live Arena triage and two-turn clarification checks; its complete
 response is saved in evaluation/results/deployment_verification.json.
+The first deployed stress run's terminal outcomes are in
+evaluation/results/deployed_public_first_run.txt. Its failed real-action case
+and interrupted chat check were retested after the admission guard was deployed:
+the explicit sending request returned blocked with no model/tool calls, and
+clarification followed by T1001 completed. The entire 14-check live suite was
+not repeated after this fix, so these records must not be described as 14/14
+live-suite evidence.
 
 ## Live provider setup and required model experiment
 
@@ -347,9 +357,8 @@ Service variables: `ENABLE_DEMO=false`, `MODEL_PROVIDER=groq`,
 `MODEL_NAME=openai/gpt-oss-20b`, `MODEL_NAMES=openai/gpt-oss-20b,openai/gpt-oss-120b`,
 `MAX_OUTPUT_TOKENS=2048`, and `MODEL_PRICES_JSON` with the current Groq prices above.
 `GROQ_API_KEY` is stored only as a Railway secret; it is never included in Git or
-in the ZIP. Railway's Free/Trial plan can have limited outbound access for
-unverified accounts and limited monthly credits, so actual public checks remain
-necessary. `render.yaml` is an optional alternative for accounts that can complete
+in the ZIP. Railway's Free/Trial plan has limited monthly credits and availability
+may change; public checks were run against the active service. `render.yaml` is an optional alternative for accounts that can complete
 Render's billing verification; it is not the deployed service.
 
 The local default host is 127.0.0.1; hosted startup binds 0.0.0.0 and uses PORT.

@@ -16,15 +16,16 @@
 - [x] Select current Groq model IDs: openai/gpt-oss-20b and openai/gpt-oss-120b.
 - [x] Add GROQ_API_KEY as a Railway secret and verify both models are enabled for the account.
 - [x] Run the two-model experiment; add measured table and selection rationale.
-- [ ] Run live-model public cases and investigate failures.
+- [x] Run live-model public cases and investigate failures; record the initial
+  12/13 Arena outcome, the DNS interruption and the post-fix targeted retests.
 - [x] Confirm class/section, university email and GitHub username.
   Section A; i221296@nu.edu.pk; eraj22.
 - [x] Verify private repository and write access: eraj22/erajA1AgenticAI.
-- [ ] Verify the reported source commit is pushed before final submission.
+- [x] Verify the source commit is pushed before final submission.
 - [ ] Invite the instructor after obtaining the verified Classroom username.
-- [ ] Deploy the final source commit with real provider secrets and demo disabled.
+- [x] Deploy the source commit with real provider secrets and demo disabled.
 - [x] Record real public UI, /health, /arena/run, /arena/manifest and /docs URLs.
-- [ ] Run deployed verifier, public cases and private-window UI check.
+- [x] Run the deployed verifier and public cases; confirm anonymous HTTP access.
 - [ ] Commit final source and update both submission summaries to that full hash.
 - [ ] Generate matching final PDF/ZIP, extract and verify.
 - [ ] Attach both files in Classroom, Turn in, and confirm Turned in.

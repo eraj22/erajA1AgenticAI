@@ -2718,5 +2718,7 @@
       "observed_output_tokens": 2569,
       "observed_cost_usd": 0.0062796
     }
-  ]
+  ],
+  "comparison_source_commit": "23622482350dbe607b625b6d018eade6ae9bb8f8",
+  "scope_note": "Measured before the explicit real-world-action admission guard; original responses and metrics are preserved. The guard affects only real-world-action requests, and was retested separately on the deployed revision."
 }
