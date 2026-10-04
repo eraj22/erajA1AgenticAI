@@ -1,0 +1,3 @@
+# Optional, only for regenerating the submission PDF; not needed by the service.
+reportlab>=4,<5
+

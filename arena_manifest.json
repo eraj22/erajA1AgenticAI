@@ -1,0 +1,29 @@
+{
+  "arena_version": "0.1",
+  "agent_name": "TicketPilot",
+  "domain": "Support-Ticket Triage",
+  "description": "Triage one sample ticket, validate its priority and team, and create an unsent sandbox reply draft.",
+  "endpoint": "/arena/run",
+  "health_endpoint": "/health",
+  "implementation": "ticketpilot",
+  "fault_types": [
+    "none",
+    "tool_timeout",
+    "malformed_tool_output",
+    "invalid_agent_decision"
+  ],
+  "limits": {
+    "max_steps": 6,
+    "max_tool_retries": 2,
+    "run_timeout_seconds": 40,
+    "max_response_bytes": 50000
+  },
+  "actions": [
+    "read_ticket",
+    "read_policy",
+    "set_triage",
+    "draft_reply"
+  ],
+  "sandbox": "Isolated per run; no real external side effects.",
+  "demo_notice": "demo is scripted and does not satisfy the model-selection requirement."
+}

@@ -1,0 +1,53 @@
+test_adversarial_model_cannot_switch_ticket (test_agent.AgentTests.test_adversarial_model_cannot_switch_ticket) ... ok
+test_all_sample_tickets (test_agent.AgentTests.test_all_sample_tickets) ... ok
+test_arguments_extra_fields_rejected (test_agent.AgentTests.test_arguments_extra_fields_rejected) ... ok
+test_complete_and_three_meaningful_actions (test_agent.AgentTests.test_complete_and_three_meaningful_actions) ... ok
+test_conflicting_identifiers (test_agent.AgentTests.test_conflicting_identifiers) ... ok
+test_context_budget_prevents_call (test_agent.AgentTests.test_context_budget_prevents_call) ... ok
+test_cost_budget_prevents_call (test_agent.AgentTests.test_cost_budget_prevents_call) ... ok
+test_external_identifier_not_authorized (test_agent.AgentTests.test_external_identifier_not_authorized) ... ok
+test_fault_is_independent_for_each_run (test_agent.AgentTests.test_fault_is_independent_for_each_run) ... ok
+test_faults_recover_and_count (test_agent.AgentTests.test_faults_recover_and_count) ... ok
+test_missing_action_is_invalid (test_agent.AgentTests.test_missing_action_is_invalid) ... ok
+test_missing_identifier_no_invention (test_agent.AgentTests.test_missing_identifier_no_invention) ... ok
+test_optional_policy_action_is_model_selected (test_agent.AgentTests.test_optional_policy_action_is_model_selected) ... ok
+test_outage_cannot_be_downgraded (test_agent.AgentTests.test_outage_cannot_be_downgraded) ... ok
+test_permanent_malformed_decision_exhausts_repairs (test_agent.AgentTests.test_permanent_malformed_decision_exhausts_repairs) ... ok
+test_premature_completion_rejected (test_agent.AgentTests.test_premature_completion_rejected) ... ok
+test_provider_failure_is_bounded (test_agent.AgentTests.test_provider_failure_is_bounded) ... ok
+test_real_action_not_in_capability_set (test_agent.AgentTests.test_real_action_not_in_capability_set) ... ok
+test_real_tool_timeout (test_agent.AgentTests.test_real_tool_timeout) ... ok
+test_repair_uses_shared_step_budget (test_agent.AgentTests.test_repair_uses_shared_step_budget) ... ok
+test_run_timeout_preserves_trace (test_agent.AgentTests.test_run_timeout_preserves_trace) ... ok
+test_sandbox_isolation (test_agent.AgentTests.test_sandbox_isolation) ... ok
+test_security_ticket_cannot_be_misrouted (test_agent.AgentTests.test_security_ticket_cannot_be_misrouted) ... ok
+test_step_budget_stops_without_false_completion (test_agent.AgentTests.test_step_budget_stops_without_false_completion) ... ok
+test_terminal_with_tool_cannot_execute (test_agent.AgentTests.test_terminal_with_tool_cannot_execute) ... ok
+test_token_budget_prevents_call (test_agent.AgentTests.test_token_budget_prevents_call) ... ok
+test_tool_exception_is_bounded (test_agent.AgentTests.test_tool_exception_is_bounded) ... ok
+test_tool_fault_with_no_retry_stops (test_agent.AgentTests.test_tool_fault_with_no_retry_stops) ... ok
+test_unknown_identifier (test_agent.AgentTests.test_unknown_identifier) ... ok
+test_untrusted_body_cannot_execute_instructions (test_agent.AgentTests.test_untrusted_body_cannot_execute_instructions) ... ok
+test_usage_and_cost_are_measured (test_agent.AgentTests.test_usage_and_cost_are_measured) ... ok
+test_validly_typed_but_wrong_tool_output_rejected (test_agent.AgentTests.test_validly_typed_but_wrong_tool_output_rejected) ... ok
+test_arena_request_id_is_not_memory (test_agent.ApiTests.test_arena_request_id_is_not_memory) ... ok
+test_configured_models_do_not_expose_keys (test_agent.ApiTests.test_configured_models_do_not_expose_keys) ... ok
+test_history_and_external_text_never_system_authority (test_agent.ApiTests.test_history_and_external_text_never_system_authority) ... ok
+test_memory_is_bounded (test_agent.ApiTests.test_memory_is_bounded) ... ok
+test_multi_turn_clarification_reset_and_isolation (test_agent.ApiTests.test_multi_turn_clarification_reset_and_isolation) ... ok
+test_new_goal_replaces_pending_goal (test_agent.ApiTests.test_new_goal_replaces_pending_goal) ... ok
+test_rate_and_concurrency_admission (test_agent.ApiTests.test_rate_and_concurrency_admission) ... ok
+test_request_body_limit (test_agent.ApiTests.test_request_body_limit) ... ok
+test_routes_and_http_schema (test_agent.ApiTests.test_routes_and_http_schema) ... ok
+test_same_session_concurrency (test_agent.ApiTests.test_same_session_concurrency) ... ok
+test_unknown_identifier_clarification_can_replace_selection (test_agent.ApiTests.test_unknown_identifier_clarification_can_replace_selection) ... ok
+test_anthropic_request_and_usage (test_providers.ProviderTests.test_anthropic_request_and_usage) ... ok
+test_daily_call_cap (test_providers.ProviderTests.test_daily_call_cap) ... ok
+test_gemini_request_and_usage (test_providers.ProviderTests.test_gemini_request_and_usage) ... ok
+test_http_error_is_sanitized (test_providers.ProviderTests.test_http_error_is_sanitized) ... ok
+test_invalid_model_cannot_change_provider_url (test_providers.ProviderTests.test_invalid_model_cannot_change_provider_url) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 1.470s
+
+OK

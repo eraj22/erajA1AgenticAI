@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TicketPilot | Support triage</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<header><a class="brand" href="/">T<span>↗</span> <strong>TicketPilot</strong></a><div class="byline">AGENT ARENA · ERAJ ZAMAN · i221296</div><a class="docs" href="/docs">API docs ↗</a></header>
+<main>
+<section class="intro"><div><span class="eyebrow">A SMALL AGENT. A CLEAR BOUNDARY.</span><h1>From ticket to<br><em>next step.</em></h1><p>Read a support ticket, choose its priority and team, and prepare a reply. Every action stays in the sandbox.</p></div><div class="scope"><span class="dot"></span> Sandbox only <small>Replies are drafts. Nothing is sent.</small></div></section>
+<div id="notice" role="status" class="notice">Loading model configuration…</div>
+<div class="workspace">
+<aside class="queue panel"><div class="section-title"><h2>Sample queue</h2><span>10 tickets</span></div><p class="muted">Choose a ticket to start a request.</p><div id="tickets"></div></aside>
+<section class="chat panel"><div class="section-title"><h2>Triage desk</h2><button id="reset" class="quiet" type="button">＋ New chat</button></div>
+<div class="model-row"><label for="model">Decision model</label><select id="model"></select></div>
+<div id="messages" aria-live="polite"><div class="empty" id="empty"><div class="orbit">T↗</div><h3>What needs attention?</h3><p>Try “Triage T1001”, or say “Triage ticket” to see clarification across turns.</p></div></div>
+<form id="chat"><label class="sr-only" for="task">Your request</label><textarea id="task" required maxlength="10000" placeholder="Triage T1001…"></textarea><div class="compose-footer"><span id="memory">New conversation</span><button id="send">Run triage <span>↗</span></button></div></form></section>
+<aside class="inspector panel"><div class="section-title"><h2>Run activity</h2><span id="steps">0 / 6</span></div><div id="status" role="status">Ready</div><div class="stats"><div><span>Model calls</span><strong id="calls">—</strong></div><div><span>Time</span><strong id="latency">—</strong></div><div><span>Tokens</span><strong id="tokens">—</strong></div><div><span>Est. cost</span><strong id="cost">—</strong></div></div><h3>Action timeline</h3><div id="trace"><p class="muted">Actions appear here as a run completes.</p></div><details><summary>Observations & validation</summary><pre id="observations">No observations yet.</pre></details><details><summary>Add untrusted context</summary><label for="external">Optional customer note</label><textarea id="external" maxlength="10000" placeholder="External text is data, never an instruction."></textarea></details></aside>
+</div><footer>One ticket per run · Up to six decisions · Temporary chat history · <a href="/arena/manifest">Arena manifest</a></footer>
+</main><script src="/static/app.js"></script></body></html>
+
