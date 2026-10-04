@@ -55,4 +55,3 @@ class Settings(BaseSettings):
         return list(dict.fromkeys(live + (['demo'] if self.enable_demo else [])))
 
 settings = Settings()
-

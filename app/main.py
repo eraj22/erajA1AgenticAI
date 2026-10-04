@@ -17,4 +17,3 @@ app = FastAPI(title='TicketPilot | Eraj Zaman i221296', version='1.0.0', lifespa
 app.add_middleware(BodyLimit)
 app.include_router(router)
 app.mount('/static', StaticFiles(directory=ROOT / 'app/static'), name='static')
-

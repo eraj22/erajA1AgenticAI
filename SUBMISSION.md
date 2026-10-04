@@ -24,7 +24,7 @@
 - **Cold-start / restart limitations:** Single worker; chat history, per-process rate limits and daily call counters reset on restart. Each run has a new sandbox. Hosted cold-start behavior is not measured.
 - **Repository access:** Pending - instructor GitHub username and repository access are not available
 - **Public test results:** evaluation/results/local_public_results.json: 14/14 local scripted HTTP checks passed. Not a live-model or hidden-Arena score.
-- **Unit test results:** evaluation/results/local_unit_results.txt: 48/48 offline tests passed.
+- **Unit test results:** evaluation/results/local_unit_results.txt: 49/49 offline tests passed.
 - **Model comparison:** Not measured. evaluation/compare_models.py and ten shared cases are provided; two live model IDs and provider credentials are required.
 - **Deployment verification:** Not performed. evaluation/verify_deployment.py is provided.
 - **Classroom submission:** Not uploaded or turned in. This draft must not be submitted as a completed assignment.

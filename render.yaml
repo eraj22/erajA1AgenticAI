@@ -21,4 +21,3 @@ services:
         sync: false
       - key: MODEL_PRICES_JSON
         value: "{}"
-

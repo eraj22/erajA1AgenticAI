@@ -124,4 +124,3 @@ def get_model(name):
     if name not in settings.enabled_models():
         raise ProviderError('model_not_configured')
     return DemoModel() if name == 'demo' else LiveModel(name)
-

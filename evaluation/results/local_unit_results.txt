@@ -31,6 +31,7 @@ test_untrusted_body_cannot_execute_instructions (test_agent.AgentTests.test_untr
 test_usage_and_cost_are_measured (test_agent.AgentTests.test_usage_and_cost_are_measured) ... ok
 test_validly_typed_but_wrong_tool_output_rejected (test_agent.AgentTests.test_validly_typed_but_wrong_tool_output_rejected) ... ok
 test_arena_request_id_is_not_memory (test_agent.ApiTests.test_arena_request_id_is_not_memory) ... ok
+test_chat_without_model_uses_server_default (test_agent.ApiTests.test_chat_without_model_uses_server_default) ... ok
 test_configured_models_do_not_expose_keys (test_agent.ApiTests.test_configured_models_do_not_expose_keys) ... ok
 test_history_and_external_text_never_system_authority (test_agent.ApiTests.test_history_and_external_text_never_system_authority) ... ok
 test_memory_is_bounded (test_agent.ApiTests.test_memory_is_bounded) ... ok
@@ -48,6 +49,6 @@ test_http_error_is_sanitized (test_providers.ProviderTests.test_http_error_is_sa
 test_invalid_model_cannot_change_provider_url (test_providers.ProviderTests.test_invalid_model_cannot_change_provider_url) ... ok
 
 ----------------------------------------------------------------------
-Ran 48 tests in 1.470s
+Ran 49 tests in 1.918s
 
 OK

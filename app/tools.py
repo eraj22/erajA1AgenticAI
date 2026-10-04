@@ -110,4 +110,3 @@ class Sandbox:
         elif name == 'set_triage': self.state.triage = result
         elif name == 'draft_reply': self.state.draft = result
         return result.model_dump()
-

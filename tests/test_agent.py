@@ -274,6 +274,12 @@ class ApiTests(unittest.TestCase):
         with TestClient(app) as c:
             self.assertNotIn('api_key',c.get('/models').text.lower())
 
+    def test_chat_without_model_uses_server_default(self):
+        with TestClient(app) as c:
+            result=c.post('/chat',json={'session_id':'default-model-session-1234','task':'Triage T1001'})
+            self.assertEqual(result.status_code,200)
+            self.assertEqual(result.json()['status'],'completed')
+
     def test_memory_is_bounded(self):
         m=Memory()
         for i in range(20): m.add('a',str(i),'reply')
@@ -302,4 +308,3 @@ class ApiTests(unittest.TestCase):
 
 if __name__=='__main__':
     unittest.main()
-

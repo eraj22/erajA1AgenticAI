@@ -43,4 +43,3 @@ def main():
     return 0 if output['passed']==output['total'] else 1
 
 if __name__=='__main__': raise SystemExit(main())
-

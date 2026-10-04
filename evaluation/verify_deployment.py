@@ -33,4 +33,3 @@ def main():
     print(json.dumps(report,indent=2));return 0 if report['passed'] else 1
 
 if __name__=='__main__': raise SystemExit(main())
-

@@ -39,4 +39,3 @@ def build_messages(state, history, external_context):
         'tool_and_validation_observations': state.observations[-8:],
     }
     return [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(context, ensure_ascii=False)}]
-

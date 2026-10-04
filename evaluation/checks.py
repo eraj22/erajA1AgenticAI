@@ -23,4 +23,3 @@ def check_result(case, payload):
 
 def action_selection_correct(case, payload):
     return all(check_result(case,payload).values())
-

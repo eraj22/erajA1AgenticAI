@@ -249,7 +249,7 @@ Public tests include successful triage, missing/unknown/conflicting IDs, injecte
 text, each fault hook, budget exhaustion, autonomy and a two-turn chat. The public
 runner checks structured observations and state, not just a success label.
 
-The current evidence records **48/48 unit tests** and **14/14 local HTTP checks**.
+The current evidence records **49/49 unit tests** and **14/14 local HTTP checks**.
 See evaluation/results/local_unit_results.txt and local_public_results.json for
 actual offline evidence. These results **do not establish live LLM injection
 resistance, language understanding, model quality or the hidden Arena score**.
@@ -356,4 +356,3 @@ Upload both files to Classroom, click Turn in, confirm Turned in, and keep the
 submitted source/deployment available during the evaluation window. The live
 Classroom deadline takes precedence over the September 24, 2026 date printed in
 the supplied assignment PDF.
-

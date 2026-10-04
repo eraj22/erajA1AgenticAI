@@ -27,4 +27,3 @@ def resolve_goal(task, pending_goal=None):
     if pending_goal and re.fullmatch(r'\s*T[0-9]{4}\s*[.!]?\s*', task, re.I):
         return re.sub(r'\bT[0-9]{4}\b', task.strip().rstrip('.!').upper(), pending_goal, flags=re.I) + '\nUser clarification: ' + task.strip()
     return task
-

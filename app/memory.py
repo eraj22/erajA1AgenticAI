@@ -32,4 +32,3 @@ class Memory:
 
     def clear(self, session):
         self.sessions.pop(session, None)
-

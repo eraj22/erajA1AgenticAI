@@ -43,4 +43,3 @@ class BodyLimit:
         async def replay():
             return chunks.pop(0) if chunks else await receive()
         await self.app(scope, replay, send)
-

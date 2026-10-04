@@ -23,4 +23,3 @@ async def execute(request, history=None, model='demo', goal=None, model_client=N
             steps=result.steps, metrics=result.metrics)
     log.info('request=%s status=%s steps=%s stop=%s', request.request_id, result.status, result.steps, result.stop_reason)
     return result
-

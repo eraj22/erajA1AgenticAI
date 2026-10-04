@@ -150,4 +150,3 @@ async def run_agent(request, history, model, goal=None, model_client=None):
             return finish('budget_exceeded', 'step_budget_reached', 'The run reached its decision limit before validated completion.')
     except TimeoutError:
         return finish('budget_exceeded', 'time_budget_reached', 'The run reached its time limit and stopped.')
-

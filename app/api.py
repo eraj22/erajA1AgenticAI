@@ -44,7 +44,8 @@ async def arena_run(payload: ArenaRequest, request: Request):
 
 @router.post('/chat', response_model=ArenaResponse)
 async def chat(payload: ChatRequest, request: Request):
-    if payload.model not in settings.enabled_models():
+    selected_model = settings.model_name if payload.model == 'unconfigured' else payload.model
+    if selected_model not in settings.enabled_models():
         raise HTTPException(400, 'Model is not enabled')
     busy = request.app.state.busy
     if payload.session_id in busy:
@@ -56,7 +57,7 @@ async def chat(payload: ChatRequest, request: Request):
     try:
         session = memory.get(payload.session_id)
         goal = resolve_goal(payload.task, session.pending_goal)
-        result = await execute(payload, session.messages, payload.model, goal=goal)
+        result = await execute(payload, session.messages, selected_model, goal=goal)
         pending = goal if result.status == 'needs_clarification' else None
         memory.add(payload.session_id, payload.task, result.final_response, pending)
         return result
@@ -70,4 +71,3 @@ def reset(session_id: str, request: Request):
         raise HTTPException(409, 'Chat is running')
     request.app.state.memory.clear(session_id)
     return {'status': 'cleared'}
-
