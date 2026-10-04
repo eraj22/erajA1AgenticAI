@@ -81,7 +81,7 @@ i221296/
     models.py        common Arena and domain contracts
     domain.py        trusted routing/priority policy and goal resolution
     prompts.py       dynamic system/context assembly
-    providers.py     Gemini/Anthropic REST adapters + labelled demo
+    providers.py     Gemini/Anthropic/Groq REST adapters + labelled demo
     agent.py         model-driven loop and shared decision budget
     tools.py         capability gateway and transactional sandbox
     arena.py         validated response boundary and safe summary logging
@@ -252,20 +252,36 @@ Public tests include successful triage, missing/unknown/conflicting IDs, injecte
 text, each fault hook, budget exhaustion, autonomy and a two-turn chat. The public
 runner checks structured observations and state, not just a success label.
 
-The current evidence records **49/49 unit tests** and **14/14 local HTTP checks**.
+The current evidence records **53/53 unit tests** and **14/14 local HTTP checks**.
 See evaluation/results/local_unit_results.txt and local_public_results.json for
 actual offline evidence. These results **do not establish live LLM injection
 resistance, language understanding, model quality or the hidden Arena score**.
 
 ## Live provider setup and required model experiment
 
-Provider adapters use async REST via httpx. Supported providers are Gemini and
-Anthropic. Obtain access through your own account; keep the key only in .env or the
-host secret settings. No key was supplied with this project.
+Provider adapters use async REST via httpx. Supported providers are Gemini,
+Anthropic, and Groq. Groq is the selected deployment provider. Current production
+candidate IDs are `openai/gpt-oss-20b` and `openai/gpt-oss-120b`; model access
+still needs verification using Eraj's Groq account. The adapter uses JSON mode,
+low reasoning effort and hides returned reasoning. Runtime schema and policy checks
+validate every decision before a tool runs.
 
-Set MODEL_PROVIDER, MODEL_NAME, and comma-separated MODEL_NAMES to two exact enabled
-model IDs available to your account. Set GEMINI_API_KEY or ANTHROPIC_API_KEY.
-Set ENABLE_DEMO=false for evaluation. Do not use an unverified model alias.
+To run the **live** agent locally, copy `.env.example` to ignored `.env` and set:
+
+```text
+ENABLE_DEMO=false
+MODEL_PROVIDER=groq
+MODEL_NAME=openai/gpt-oss-20b
+MODEL_NAMES=openai/gpt-oss-20b,openai/gpt-oss-120b
+GROQ_API_KEY=<your key, stored only in .env or Render secrets>
+MODEL_PRICES_JSON={"openai/gpt-oss-20b":{"input":0.075,"output":0.30},"openai/gpt-oss-120b":{"input":0.15,"output":0.60}}
+MAX_OUTPUT_TOKENS=2048
+```
+
+These prices are USD per million input/output tokens from Groq's model list as
+checked on October 4, 2026; verify again before making cost claims. Never commit
+or submit the real `.env`. A provider key has not been supplied, so the live
+experiment remains unmeasured. Gemini and Anthropic remain optional alternatives.
 
 MODEL_PRICES_JSON is a JSON object mapping exact model IDs to input/output USD per
 million tokens. Example shape (replace symbolic values with current numeric prices):
@@ -273,7 +289,7 @@ million tokens. Example shape (replace symbolic values with current numeric pric
 Model availability and prices must be checked with the provider before running.
 
 ```powershell
-.\.venv\Scripts\python.exe evaluation/compare_models.py --models MODEL_A MODEL_B
+.\.venv\Scripts\python.exe evaluation/compare_models.py --models openai/gpt-oss-20b openai/gpt-oss-120b
 ```
 
 The runner refuses demo and identical model IDs. It runs the same ten representative
@@ -286,8 +302,8 @@ not an independent human judgment of each intermediate action.
 
 | Candidate | Task success | Contract validity | Action selection | Latency | Tokens | Estimated cost |
 |---|---|---|---|---|---|---|
-| Live model A - not configured | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
-| Live model B - not configured | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
+| Groq GPT-OSS 20B - key pending | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
+| Groq GPT-OSS 120B - key pending | Not measured | Not measured | Not measured | Not measured | Not measured | Not measured |
 
 **Selection rationale pending real measurements.** Prefer the model meeting semantic
 correctness and safety requirements first, then compare validity, latency and cost.
@@ -305,7 +321,7 @@ Use the Render Python service configuration in render.yaml:
 build `pip install -r requirements.txt`;
 start `uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1`;
 health route /health. Set the provider/model settings and secret key in Render.
-For Anthropic, replace the Gemini secret field with ANTHROPIC_API_KEY.
+Groq is preselected; enter GROQ_API_KEY only in Render secret settings.
 The Dockerfile offers an equivalent startup path.
 
 The local default host is 127.0.0.1; hosted startup binds 0.0.0.0 and uses PORT.
@@ -328,6 +344,9 @@ Provider API references:
 - https://ai.google.dev/api/generate-content
 - https://ai.google.dev/gemini-api/docs/structured-output
 - https://platform.claude.com/docs/en/api/messages
+- https://console.groq.com/docs/models
+- https://console.groq.com/docs/structured-outputs
+- https://console.groq.com/docs/reasoning
 - https://render.com/docs/deploy-fastapi
 
 ## Submission and remaining external requirements

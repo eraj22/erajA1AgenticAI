@@ -45,10 +45,14 @@ test_unknown_identifier_clarification_can_replace_selection (test_agent.ApiTests
 test_anthropic_request_and_usage (test_providers.ProviderTests.test_anthropic_request_and_usage) ... ok
 test_daily_call_cap (test_providers.ProviderTests.test_daily_call_cap) ... ok
 test_gemini_request_and_usage (test_providers.ProviderTests.test_gemini_request_and_usage) ... ok
+test_groq_failure_and_model_safety (test_providers.ProviderTests.test_groq_failure_and_model_safety) ... ok
+test_groq_missing_usage_stays_unknown (test_providers.ProviderTests.test_groq_missing_usage_stays_unknown) ... ok
+test_groq_model_allowlist_requires_key (test_providers.ProviderTests.test_groq_model_allowlist_requires_key) ... ok
+test_groq_request_and_usage (test_providers.ProviderTests.test_groq_request_and_usage) ... ok
 test_http_error_is_sanitized (test_providers.ProviderTests.test_http_error_is_sanitized) ... ok
 test_invalid_model_cannot_change_provider_url (test_providers.ProviderTests.test_invalid_model_cannot_change_provider_url) ... ok
 
 ----------------------------------------------------------------------
-Ran 49 tests in 1.918s
+Ran 53 tests in 1.980s
 
 OK

@@ -11,12 +11,13 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ROOT / '.env', extra='ignore')
     host: str = '127.0.0.1'
     port: int = Field(default=8000, ge=1, le=65535)
-    model_provider: Literal['gemini', 'anthropic', 'unconfigured'] = 'unconfigured'
+    model_provider: Literal['gemini', 'anthropic', 'groq', 'unconfigured'] = 'unconfigured'
     model_name: str = 'demo'
     model_names: str = ''
     enable_demo: bool = True
     gemini_api_key: SecretStr = SecretStr('')
     anthropic_api_key: SecretStr = SecretStr('')
+    groq_api_key: SecretStr = SecretStr('')
     model_prices_json: str = '{}'
     max_steps: int = Field(default=6, ge=1, le=6)
     max_tool_retries: int = Field(default=2, ge=0, le=2)
@@ -46,7 +47,8 @@ class Settings(BaseSettings):
         return self
 
     def enabled_models(self):
-        key = self.gemini_api_key if self.model_provider == 'gemini' else self.anthropic_api_key
+        key = {'gemini': self.gemini_api_key, 'anthropic': self.anthropic_api_key,
+               'groq': self.groq_api_key}.get(self.model_provider, SecretStr(''))
         live = []
         if self.model_provider != 'unconfigured' and key.get_secret_value():
             live = [m.strip() for m in self.model_names.split(',') if m.strip()]

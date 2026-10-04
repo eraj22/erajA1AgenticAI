@@ -59,7 +59,9 @@ class DemoModel:
 
 class LiveModel:
     def __init__(self, name, transport=None):
-        if not re.fullmatch(r'[A-Za-z0-9._-]{1,120}', name):
+        pattern = (r'[A-Za-z0-9][A-Za-z0-9._-]*(?:/[A-Za-z0-9][A-Za-z0-9._-]*)?'
+                   if settings.model_provider == 'groq' else r'[A-Za-z0-9][A-Za-z0-9._-]*')
+        if not isinstance(name, str) or len(name) > 120 or not re.fullmatch(pattern, name):
             raise ProviderError('invalid_model_identifier')
         self.name, self.transport = name, transport
 
@@ -82,6 +84,17 @@ class LiveModel:
             headers = {'x-api-key': key, 'anthropic-version': '2023-06-01'}
             payload = {'model': self.name, 'system': messages[0]['content'],
                        'messages': [messages[1]], 'max_tokens': settings.max_output_tokens}
+        elif settings.model_provider == 'groq':
+            key = settings.groq_api_key.get_secret_value()
+            url = 'https://api.groq.com/openai/v1/chat/completions'
+            headers = {'Authorization': f'Bearer {key}'}
+            # JSON mode is only formatting assistance. Runtime schema and semantic
+            # validation remain authoritative before any tool can run.
+            payload = {'model': self.name, 'messages': messages, 'temperature': 0,
+                       'max_completion_tokens': settings.max_output_tokens,
+                       'response_format': {'type': 'json_object'}}
+            if self.name in ('openai/gpt-oss-20b', 'openai/gpt-oss-120b'):
+                payload.update(reasoning_effort='low', include_reasoning=False)
         else:
             raise ProviderError('provider_not_configured')
         if not key:
@@ -101,10 +114,17 @@ class LiveModel:
                 outgoing = usage.get('candidatesTokenCount')
                 if outgoing is not None:
                     outgoing += usage.get('thoughtsTokenCount', 0)
+            elif settings.model_provider == 'groq':
+                raw = data['choices'][0]['message'].get('content')
+                usage = data.get('usage') or {}
+                incoming, outgoing = usage.get('prompt_tokens'), usage.get('completion_tokens')
+                # completion_tokens already includes reasoning; never add it twice.
             else:
                 raw = ''.join(p.get('text', '') for p in data.get('content', []) if p.get('type') == 'text')
                 usage = data.get('usage', {})
                 incoming, outgoing = usage.get('input_tokens'), usage.get('output_tokens')
+            if raw is not None and not isinstance(raw, str):
+                raise ProviderError('provider_malformed_response', True)
             if not raw:
                 raise ProviderError('provider_empty_response', True)
             if len(raw.encode()) > 20000:
@@ -117,7 +137,7 @@ class LiveModel:
             raise ProviderError('provider_timeout', True) from None
         except httpx.RequestError:
             raise ProviderError('provider_unavailable', True) from None
-        except (ValueError, KeyError, IndexError, TypeError):
+        except (ValueError, KeyError, IndexError, TypeError, AttributeError):
             raise ProviderError('provider_malformed_response', True) from None
 
 def get_model(name):

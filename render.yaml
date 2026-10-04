@@ -12,12 +12,14 @@ services:
       - key: ENABLE_DEMO
         value: "false"
       - key: MODEL_PROVIDER
-        sync: false
+        value: groq
       - key: MODEL_NAME
-        sync: false
+        value: openai/gpt-oss-20b
       - key: MODEL_NAMES
-        sync: false
-      - key: GEMINI_API_KEY
+        value: openai/gpt-oss-20b,openai/gpt-oss-120b
+      - key: GROQ_API_KEY
         sync: false
       - key: MODEL_PRICES_JSON
-        value: "{}"
+        value: '{"openai/gpt-oss-20b":{"input":0.075,"output":0.30},"openai/gpt-oss-120b":{"input":0.15,"output":0.60}}'
+      - key: MAX_OUTPUT_TOKENS
+        value: "2048"
