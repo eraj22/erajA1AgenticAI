@@ -10,21 +10,21 @@
 - **Agent name:** TicketPilot
 - **Domain:** Support-Ticket Triage (sandbox)
 - **GitHub repository URL:** https://github.com/eraj22/erajA1AgenticAI
-- **Final source commit hash:** c8610e6ad19bb929508aa0ad877fb39ba603f931
+- **Final source commit hash:** 23e389448662bb8e4e00da1e13a29ac10a760497
 - **Working agent interface:** Pending - public deployment not created
 - **Health endpoint (GET):** Pending - public base URL required; route /health
 - **Arena endpoint (POST):** Pending - public base URL required; route /arena/run
 - **Manifest endpoint (GET):** Pending - public base URL required; route /arena/manifest
 - **API documentation:** Pending - public base URL required; route /docs
-- **Hosting provider:** Render configuration supplied; no deployment verified
-- **Default model / provider:** Offline scripted demo. Live provider and model remain unconfigured.
-- **Other available models:** None configured. Gemini and Anthropic adapters are implemented.
+- **Hosting provider:** Render blueprint configured for Groq; deployment not created or verified.
+- **Default model / provider:** Groq GPT-OSS 20B configured in Render blueprint; live key and deployment pending. Local default remains labelled offline demo.
+- **Other available models:** Groq GPT-OSS 120B configured as second candidate; live account access and measurements pending.
 - **Example input:** Triage T1001
 - **Expected result:** Read T1001; save billing triage with normal or higher priority; create an unsent reply draft. No real email, refund or account change.
 - **Cold-start / restart limitations:** Single worker; chat history, per-process rate limits and daily call counters reset on restart. Each run has a new sandbox. Hosted cold-start behavior is not measured.
 - **Repository access:** Private repository verified; source uploaded to eraj22/erajA1AgenticAI. Instructor invitation pending - username not supplied.
 - **Public test results:** evaluation/results/local_public_results.json: 14/14 local scripted HTTP checks passed. Not a live-model or hidden-Arena score.
-- **Unit test results:** evaluation/results/local_unit_results.txt: 49/49 offline tests passed.
-- **Model comparison:** Not measured. evaluation/compare_models.py and ten shared cases are provided; two live model IDs and provider credentials are required.
+- **Unit test results:** evaluation/results/local_unit_results.txt: 53/53 offline tests passed, including mocked Groq adapter checks.
+- **Model comparison:** Not measured. Groq GPT-OSS 20B and 120B selected as candidates; GROQ_API_KEY and live account access required.
 - **Deployment verification:** Not performed. evaluation/verify_deployment.py is provided.
 - **Classroom submission:** Not uploaded or turned in. This draft must not be submitted as a completed assignment.
