@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "source_commit": "25d594d93123a4560b190af9df5c64f516986bfe",
+  "source_commit": "c8610e6ad19bb929508aa0ad877fb39ba603f931",
   "fields": [
     [
       "Full name",
@@ -36,7 +36,7 @@
     ],
     [
       "Final source commit hash",
-      "25d594d93123a4560b190af9df5c64f516986bfe"
+      "c8610e6ad19bb929508aa0ad877fb39ba603f931"
     ],
     [
       "Working agent interface",
@@ -84,7 +84,7 @@
     ],
     [
       "Repository access",
-      "Private repository verified; owner eraj22 has write access. Instructor invitation pending - username not supplied."
+      "Private repository verified; source uploaded to eraj22/erajA1AgenticAI. Instructor invitation pending - username not supplied."
     ],
     [
       "Public test results",
