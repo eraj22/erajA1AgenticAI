@@ -20,9 +20,13 @@ def main():
         p.error('Metadata is incomplete. Use --draft only for a clearly labelled review package.')
     def git(*command):
         return subprocess.check_output(['git','-C',str(root),*command],text=True).strip()
-    head=git('rev-parse','HEAD')
-    if details['source_commit']!=head:
-        p.error('Declared source_commit does not match HEAD.')
+    source_commit=details['source_commit']
+    if not re.fullmatch(r'[0-9a-f]{40}',source_commit):
+        p.error('Declared source_commit must be a full commit hash.')
+    if subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',source_commit,'HEAD'],capture_output=True).returncode:
+        p.error('Declared source_commit is not an ancestor of HEAD.')
+    if any(name not in METADATA for name in git('diff',source_commit,'HEAD','--name-only').splitlines()):
+        p.error('HEAD contains source changes after the declared source commit.')
     # Metadata may be generated after the source commit, as the supplied starter permits.
     changed=git('diff','HEAD','--name-only').splitlines()
     if any(name not in METADATA for name in changed):

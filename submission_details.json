@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "source_commit": "PENDING_SOURCE_COMMIT",
+  "source_commit": "25d594d93123a4560b190af9df5c64f516986bfe",
   "fields": [
     [
       "Full name",
@@ -12,15 +12,15 @@
     ],
     [
       "Class / section",
-      "Pending - not provided"
+      "A"
     ],
     [
       "University email",
-      "Pending - not provided"
+      "i221296@nu.edu.pk"
     ],
     [
       "GitHub username",
-      "Pending - account identity not verified"
+      "eraj22"
     ],
     [
       "Agent name",
@@ -32,11 +32,11 @@
     ],
     [
       "GitHub repository URL",
-      "Pending - private repository not created or connected"
+      "https://github.com/eraj22/erajA1AgenticAI"
     ],
     [
       "Final source commit hash",
-      "PENDING_SOURCE_COMMIT"
+      "25d594d93123a4560b190af9df5c64f516986bfe"
     ],
     [
       "Working agent interface",
@@ -84,7 +84,7 @@
     ],
     [
       "Repository access",
-      "Pending - instructor GitHub username and repository access are not available"
+      "Private repository verified; owner eraj22 has write access. Instructor invitation pending - username not supplied."
     ],
     [
       "Public test results",

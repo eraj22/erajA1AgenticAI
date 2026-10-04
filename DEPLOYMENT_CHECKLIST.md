@@ -16,8 +16,11 @@
 - [ ] Configure an actual provider API key and two supported live model IDs.
 - [ ] Run the two-model experiment; add measured table and selection rationale.
 - [ ] Run live-model public cases and investigate failures.
-- [ ] Confirm class/section, university email and GitHub username.
-- [ ] Create/push private repository and invite the verified instructor username.
+- [x] Confirm class/section, university email and GitHub username.
+  Section A; i221296@nu.edu.pk; eraj22.
+- [x] Verify private repository and write access: eraj22/erajA1AgenticAI.
+- [ ] Verify the reported source commit is pushed before final submission.
+- [ ] Invite the instructor after obtaining the verified Classroom username.
 - [ ] Deploy final source with real provider secrets and demo disabled.
 - [ ] Record real public UI, /health, /arena/run, /arena/manifest and /docs URLs.
 - [ ] Run deployed verifier, public cases and private-window UI check.

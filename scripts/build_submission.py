@@ -34,7 +34,7 @@ def main():
            Paragraph('Eraj Zaman  |  i221296',styles['NoteCustom']),
            Paragraph(warning,styles['Kicker'])]
     if draft:
-        story.append(Paragraph('The source implementation and offline evidence are available. Provider access, measured model comparison, repository access and public deployment remain pending. This is not a completed Classroom submission.',styles['NoteCustom']))
+        story.append(Paragraph('The source implementation and offline evidence are available. Provider access, measured model comparison, instructor repository access and public deployment remain pending. This is not a completed Classroom submission.',styles['NoteCustom']))
     def table(fields):
         rows=[]
         for label,value in fields:

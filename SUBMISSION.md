@@ -4,13 +4,13 @@
 
 - **Full name:** Eraj Zaman
 - **Roll number:** i221296
-- **Class / section:** Pending - not provided
-- **University email:** Pending - not provided
-- **GitHub username:** Pending - account identity not verified
+- **Class / section:** A
+- **University email:** i221296@nu.edu.pk
+- **GitHub username:** eraj22
 - **Agent name:** TicketPilot
 - **Domain:** Support-Ticket Triage (sandbox)
-- **GitHub repository URL:** Pending - private repository not created or connected
-- **Final source commit hash:** PENDING_SOURCE_COMMIT
+- **GitHub repository URL:** https://github.com/eraj22/erajA1AgenticAI
+- **Final source commit hash:** 25d594d93123a4560b190af9df5c64f516986bfe
 - **Working agent interface:** Pending - public deployment not created
 - **Health endpoint (GET):** Pending - public base URL required; route /health
 - **Arena endpoint (POST):** Pending - public base URL required; route /arena/run
@@ -22,7 +22,7 @@
 - **Example input:** Triage T1001
 - **Expected result:** Read T1001; save billing triage with normal or higher priority; create an unsent reply draft. No real email, refund or account change.
 - **Cold-start / restart limitations:** Single worker; chat history, per-process rate limits and daily call counters reset on restart. Each run has a new sandbox. Hosted cold-start behavior is not measured.
-- **Repository access:** Pending - instructor GitHub username and repository access are not available
+- **Repository access:** Private repository verified; owner eraj22 has write access. Instructor invitation pending - username not supplied.
 - **Public test results:** evaluation/results/local_public_results.json: 14/14 local scripted HTTP checks passed. Not a live-model or hidden-Arena score.
 - **Unit test results:** evaluation/results/local_unit_results.txt: 49/49 offline tests passed.
 - **Model comparison:** Not measured. evaluation/compare_models.py and ten shared cases are provided; two live model IDs and provider credentials are required.

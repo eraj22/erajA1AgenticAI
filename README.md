@@ -1,13 +1,16 @@
 # TicketPilot - Agent Arena
 
-**Eraj Zaman | i221296 | Agentic AI, Assignment 1**
+**Eraj Zaman | i221296 | Section A | Agentic AI, Assignment 1**
+
+University email: i221296@nu.edu.pk  
+GitHub: [eraj22/erajA1AgenticAI](https://github.com/eraj22/erajA1AgenticAI) (private).
 
 TicketPilot reads one sample support ticket, chooses a policy-compliant priority and
 team, and prepares an unsent reply draft. The model chooses actions and reply content;
 Python owns validation, permitted capabilities, retries and stopping.
 
 > **Readiness:** the local application and offline tests are implemented. Real-model
-> measurements, public deployment, private GitHub access and Classroom submission
+> measurements, public deployment, instructor repository access and Classroom submission
 > still require account configuration. The default `demo` is a deterministic UI/test
 > aid, not an LLM and not evidence of satisfying the model-selection requirement.
 
@@ -334,12 +337,15 @@ The two Classroom attachments are **i221296.zip** and
 SUBMISSION.md and the PDF must match submission_details.json and contain the same
 full source commit hash and actual URLs.
 
-The supplied summaries are labelled draft because class/section, university email,
-verified GitHub identity, instructor username, repository access, public deployment
-and real-model measurements have not been supplied or completed. Required deployment
+The supplied summaries include the confirmed section, university email, GitHub
+username and private repository URL. They remain drafts because the instructor
+invitation, public deployment and real-model measurements are not completed. Required deployment
 URLs are explicitly marked pending rather than replaced with localhost links.
 
 The source commit can precede metadata generation, as permitted by the starter.
+A later metadata-only commit may update SUBMISSION.md and submission_details.json.
+The packager verifies that every other tracked file still matches the reported source
+commit. Deploy the reported source commit when preparing the final evaluation.
 Do not claim the draft metadata is deployment verification. Complete the live
 experiment, documentation and deployment, commit final source, then regenerate
 metadata and package that exact source version. Regenerate matching summaries with `pip install -r requirements-docs.txt` then
