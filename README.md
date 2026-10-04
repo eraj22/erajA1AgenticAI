@@ -292,6 +292,14 @@ Model availability and prices must be checked with the provider before running.
 .\.venv\Scripts\python.exe evaluation/compare_models.py --models openai/gpt-oss-20b openai/gpt-oss-120b
 ```
 
+When the Groq key is stored only in Render, run the same comparison through the
+deployed agent. Each case uses a fresh chat session, and the saved response
+contains the provider-reported usage and server-side cost estimate:
+
+```powershell
+.\.venv\Scripts\python.exe evaluation/compare_models.py --url https://YOUR-PUBLIC-HOST --models openai/gpt-oss-20b openai/gpt-oss-120b
+```
+
 The runner refuses demo and identical model IDs. It runs the same ten representative
 tasks through the complete loop, saves every outcome, and reports task success,
 decision contract validity, action-selection success, mean latency, tokens and cost.

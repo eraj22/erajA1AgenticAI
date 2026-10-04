@@ -3,6 +3,9 @@ import argparse
 import asyncio
 import json
 import sys
+from uuid import uuid4
+from urllib.parse import urlparse
+import httpx
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
@@ -12,14 +15,23 @@ from app.arena import execute
 from app.models import ArenaRequest
 from evaluation.checks import check_result, action_selection_correct
 
-async def compare(models):
+async def compare(models, url=None):
     cases=json.loads(Path(__file__).with_name('model_cases.json').read_text())
-    output={'generated_at':datetime.now(timezone.utc).isoformat(),'provider':settings.model_provider,
-            'prices_usd_per_million':json.loads(settings.model_prices_json),'models':[]}
-    for model in models:
+    output={'generated_at':datetime.now(timezone.utc).isoformat(),
+            'provider': 'groq' if url else settings.model_provider,
+            'prices_usd_per_million': None if url else json.loads(settings.model_prices_json),
+            'execution': 'deployed' if url else 'local', 'base_url': url, 'models':[]}
+    async with httpx.AsyncClient(timeout=50) as client:
+      for model in models:
         rows=[]
         for case in cases:
-            result=(await execute(ArenaRequest.model_validate(case['request']),model=model)).model_dump()
+            if url:
+                body={**case['request'], 'session_id': str(uuid4()), 'model': model}
+                response=await client.post(url.rstrip('/')+'/chat', json=body)
+                response.raise_for_status()
+                result=response.json()
+            else:
+                result=(await execute(ArenaRequest.model_validate(case['request']),model=model)).model_dump()
             checks=check_result(case,result)
             validation=[e for e in result['events'] if e.get('event')=='validation']
             rows.append({'name':case['name'],'success':all(checks.values()),'checks':checks,
@@ -42,11 +54,14 @@ async def compare(models):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--models',nargs=2,required=True)
+    p.add_argument('--url',help='Public HTTPS service URL; runs comparison through /chat without a local API key')
     p.add_argument('--output',default='evaluation/results/model_comparison.json')
     args=p.parse_args()
-    if len(set(args.models))!=2 or any(m=='demo' or m not in settings.enabled_models() for m in args.models):
+    if args.url and (urlparse(args.url).scheme!='https' or not urlparse(args.url).netloc):
+        p.error('--url must be the public HTTPS service URL')
+    if len(set(args.models))!=2 or any(m=='demo' or (not args.url and m not in settings.enabled_models()) for m in args.models):
         p.error('Choose two distinct configured live models; demo cannot fulfill this experiment.')
-    output=asyncio.run(compare(args.models))
+    output=asyncio.run(compare(args.models,args.url))
     path=Path(args.output);path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(output,indent=2),encoding='utf-8')
     print('Measured results saved. Review correctness and add an evidence-based selection rationale to README.')
     return 0
