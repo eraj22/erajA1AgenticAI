@@ -12,7 +12,7 @@ def main():
     data=json.loads((root/'submission_details.json').read_text(encoding='utf-8'))
     draft=data['status']!='final'
     title='TicketPilot - Assignment Submission'
-    warning='DRAFT - REQUIRED LIVE EVIDENCE PENDING' if draft else 'FINAL SUBMISSION SUMMARY'
+    warning='DRAFT - SUBMISSION STEPS PENDING' if draft else 'FINAL SUBMISSION SUMMARY'
     md=f'# {title}\n\n**{warning}**\n\n'
     md+='\n'.join(f'- **{label}:** {value}' for label,value in data['fields'])+'\n'
     (root/'SUBMISSION.md').write_text(md,encoding='utf-8')
